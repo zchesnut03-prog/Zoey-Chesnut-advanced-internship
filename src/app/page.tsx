@@ -64,14 +64,17 @@
 //   );
 // }
 
-
+"use client";
 
 import { AiFillFileText, AiFillBulb, AiFillAudio } from "react-icons/ai";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import { BiCrown } from "react-icons/bi";
 import { RiLeafLine } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { openAuthModal } from "./redux/slices/authModalSlice";
 
 export default function Home() {
+  const dispatch = useDispatch();
   return (
     <>
       <nav className="nav">
@@ -80,7 +83,11 @@ export default function Home() {
             <img className="nav__img" src="/assets/logo.png" alt="logo" />
           </figure>
           <ul className="nav__list--wrapper">
-            <li className="nav__list nav__list--login">Login</li>
+            <li
+            className="nav__list nav__list--login"
+            onClick={() => dispatch(openAuthModal())}>
+             Login
+            </li>
             <li className="nav__list nav__list--mobile">About</li>
             <li className="nav__list nav__list--mobile">Contact</li>
             <li className="nav__list nav__list--mobile">Help</li>
@@ -104,7 +111,9 @@ export default function Home() {
                   <br className="remove--tablet" />
                   and even people who don&apos;t like to read.
                 </div>
-                <button className="btn home__cta--btn">Login</button>
+                <button className="btn home__cta--btn" onClick={() => dispatch(openAuthModal())}>
+                  Login
+                </button>
               </div>
               <figure className="landing__image--mask">
                 <img src="/assets/landing.png" alt="landing" />
@@ -307,7 +316,9 @@ export default function Home() {
               </div>
             </div>
             <div className="reviews__btn--wrapper">
-              <button className="btn home__cta--btn">Login</button>
+              <button className="btn home__cta--btn" onClick={() => dispatch(openAuthModal())}>
+                Login
+              </button>
             </div>
           </div>
         </div>
